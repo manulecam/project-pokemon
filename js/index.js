@@ -19,7 +19,7 @@ const playerImage = new Image();
 playerImage.src = './images/playerDown.png';
 
 image.onload = () => {
-    c.drawImage(image, -735, -600);
+    c.drawImage(image, -735, -600)
     c.drawImage(
         playerImage,
         0,
