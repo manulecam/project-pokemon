@@ -17,8 +17,19 @@ image.src = './images/pelletTown.png';
 // PLAYER CREATION
 const playerImage = new Image();
 playerImage.src = './images/playerDown.png';
-console.log(playerImage)
+
 image.onload = () => {
-    c.drawImage(image, -750, -550)
-    c.drawImage(playerImage, 0, 0)
+    c.drawImage(image, -735, -600);
+    c.drawImage(
+        playerImage,
+        0,
+        0,
+        playerImage.width / 4,
+        playerImage.height,
+        canvas.width / 2 - playerImage.width / 4 / 2,
+        canvas.height / 2 - playerImage.height / 2,
+        playerImage.width / 4,
+        playerImage.height
+    )
 }
+
