@@ -1,9 +1,8 @@
 <h1 align="center">🛠🧮 PROJECT POKEMON 🧮🛠</h1>
 <h3 align="center">BY JUNIOR FONSECA & MANUEL LECAM</h3>
-<h3 align="center">Web development project: pokemon battle simulator. We are not the creators of this project, the creator is @ChrisCourses. We rely on his project for educational purposes only.
+<h3 align="center">Web Development Project: Pokemon Battle Simulator.</h3>
+<h3 align="center">We are not the creators of this project, the creator is @ChrisCourses.</h3>
+<h3 align="center">We rely on his project for educational purposes only.</h3>
 
-YouTube channel:
-https://www.youtube.com/@ChrisCourses
-
-Video-tutorial:
-https://www.youtube.com/watch?v=yP5DKzriqXA&t=245s&ab_channel=ChrisCourses</h3>
+<h3 align="center">YouTube channel:
+https://www.youtube.com/@ChrisCourses</h3>
