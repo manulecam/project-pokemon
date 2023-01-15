@@ -44,8 +44,18 @@ foregroundImage.src = './images/foregroundImage.png';
 
 
 // PLAYER CREATION
-const playerImage = new Image();
-playerImage.src = './images/playerDown.png';
+const playerDownImage = new Image();
+playerDownImage.src = './images/playerDown.png';
+
+const playerLeftImage = new Image();
+playerLeftImage.src = './images/playerLeft.png';
+
+const playerRightImage = new Image();
+playerRightImage.src = './images/playerRight.png';
+
+const playerUpImage = new Image();
+playerUpImage.src = './images/playerUp.png';
+
 
 
 // Drawing image
@@ -70,9 +80,16 @@ const player = new Sprite({
         x: canvas.width / 2 - 192 / 4 / 2,
         y: canvas.height / 2 - 68 / 2
     },
-    image: playerImage,
+    image: playerDownImage,
     frames: {
         max: 4
+    },
+    sprites: {
+        up: playerUpImage,
+        left: playerLeftImage,
+        right: playerRightImage,
+        down: playerDownImage
+        
     }
 })
 
@@ -145,8 +162,11 @@ function animate() {
     }
 
     let moving = true
+    player.moving = false
     // Conditioning the moviment to press of keys
     if(keys.w.pressed && lastKey === 'w') {
+        player.moving = true
+        player.image = player.sprites.up
         for(let i = 0; i < boundaries.length; i++){
             const boundary = boundaries[i]
             if (
@@ -172,6 +192,8 @@ function animate() {
             movable.position.y += 3
             ))
     } else if (keys.a.pressed && lastKey === 'a') {
+        player.moving = true
+        player.image = player.sprites.left
     for(let i = 0; i < boundaries.length; i++)  {
         const boundary = boundaries[i]
         if (
@@ -198,6 +220,8 @@ function animate() {
             movable.position.x += 3
         ))}
     else if (keys.d.pressed && lastKey === 'd') {
+        player.moving = true
+        player.image = player.sprites.right
         for(let i = 0; i < boundaries.length; i++)  {
             const boundary = boundaries[i]
             if (
@@ -225,6 +249,8 @@ function animate() {
         ))
     }
     else if (keys.s.pressed && lastKey === 's') {
+        player.moving = true
+        player.image = player.sprites.down
         for(let i = 0; i < boundaries.length; i++)  {
             const boundary = boundaries[i]
             if (
