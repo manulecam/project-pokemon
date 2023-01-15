@@ -6,17 +6,18 @@ const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
-const collisionsMap = []
+const collisionsMap = [];
 for (let i = 0; i < collisions.length; i +=70) {
-    collisionsMap.push(collisions.slice(i, 70 + i))
+    collisionsMap.push(collisions.slice(i, 70 + i));
 }
 
-const boundaries = []
+const boundaries = [];
 const offset = {
     x: -735,
     y: -650
 }
 
+// We create map collision based on values of JSON
 collisionsMap.forEach((row, i) =>  {
     row.forEach((symbol, j) => {
         if (symbol === 1025)
@@ -39,22 +40,23 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 const image = new Image();
 image.src = './images/pelletTown.png';
 
+// Foreground Creation
 const foregroundImage = new Image();
 foregroundImage.src = './images/foregroundImage.png';
 
 
 // PLAYER CREATION
 const playerDownImage = new Image();
-playerDownImage.src = './images/playerDown.png';
+playerDownImage.src = './images/playerDown.png'; // loading Player sprite to Down
 
 const playerLeftImage = new Image();
-playerLeftImage.src = './images/playerLeft.png';
+playerLeftImage.src = './images/playerLeft.png'; // loading Player sprite to Left
 
 const playerRightImage = new Image();
-playerRightImage.src = './images/playerRight.png';
+playerRightImage.src = './images/playerRight.png'; // loading Player sprite to Right
 
 const playerUpImage = new Image();
-playerUpImage.src = './images/playerUp.png';
+playerUpImage.src = './images/playerUp.png'; // loading Player sprite to Up
 
 
 
@@ -74,7 +76,7 @@ image.onload = () => {
     )
 }
 
-
+// Creating Sprites
 const player = new Sprite({
     position: {
         x: canvas.width / 2 - 192 / 4 / 2,
@@ -127,8 +129,10 @@ const keys = {
     }
 }
 
+// We create constant for the movables
 const movables = [background, ...boundaries, foreground]
 
+// We create a function that detect collisions of 2 rectangules
 function rectangularCollision({rectangle1, rectangle2}) {
     return(
         rectangle1.position.x + player.width >= rectangle2.position.x &&
@@ -144,26 +148,16 @@ function animate() {
     background.draw()
     boundaries.forEach(boundary => {
     boundary.draw()
-
-    if (
-        rectangularCollision({
-            rectangle1: player,
-            rectangle2: boundary
-        })
-    )
-    {console.log('colliding')}
-
     })
+
+    // We draw player and foreground
     player.draw()
     foreground.draw()
 
-    if (player.position.x + player.widht >= boundaries){
-        console.log('colidindo')
-    }
-
     let moving = true
     player.moving = false
-    // Conditioning the moviment to press of keys
+    
+    // If player is moving with W, do things
     if(keys.w.pressed && lastKey === 'w') {
         player.moving = true
         player.image = player.sprites.up
@@ -181,17 +175,15 @@ function animate() {
                 })
             )
             {
-                console.log('colliding')
             moving = false
             break
             }
         }
+        if(moving) movables.forEach(movable => (movable.position.y += 3))
+    }        
 
-        if(moving)
-        movables.forEach(movable => (
-            movable.position.y += 3
-            ))
-    } else if (keys.a.pressed && lastKey === 'a') {
+            // If player is moving with A, do things 
+    else if (keys.a.pressed && lastKey === 'a') {
         player.moving = true
         player.image = player.sprites.left
     for(let i = 0; i < boundaries.length; i++)  {
@@ -209,16 +201,13 @@ function animate() {
         })
         )
         {
-            console.log('colliding')
         moving = false
         break
         }
     }
+    if(moving) movables.forEach(movable => (movable.position.x += 3))}
 
-    if(moving)
-        movables.forEach(movable => (
-            movable.position.x += 3
-        ))}
+    // If player is moving with D, do things
     else if (keys.d.pressed && lastKey === 'd') {
         player.moving = true
         player.image = player.sprites.right
@@ -237,17 +226,14 @@ function animate() {
             })
             )
             {
-                console.log('colliding')
             moving = false
             break
             }
         }
-    
-        if(moving)
-        movables.forEach(movable => (
-            movable.position.x -= 3
-        ))
+        if(moving) movables.forEach(movable => (movable.position.x -= 3))
     }
+
+    // If player is moving with S, do things
     else if (keys.s.pressed && lastKey === 's') {
         player.moving = true
         player.image = player.sprites.down
@@ -266,16 +252,11 @@ function animate() {
             })
             )
             {
-                console.log('colliding')
             moving = false
             break
             }
         }
-    
-        if(moving)
-        movables.forEach(movable => (
-            movable.position.y -= 3
-        ))}
+        if(moving) movables.forEach(movable => (movable.position.y -= 3))}
 }
 
 
