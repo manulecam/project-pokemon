@@ -38,6 +38,7 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 // MAP CREATION
 const image = new Image();
+image.image.onload() = function(){}
 image.src = '../Images/pelletTown.png';
 
 // Foreground Creation
