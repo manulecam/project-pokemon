@@ -38,25 +38,25 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 // MAP CREATION
 const image = new Image();
-image.src = '../images/pelletTown.png';
+image.src = '../Images/pelletTown.png';
 
 // Foreground Creation
 const foregroundImage = new Image();
-foregroundImage.src = '../images/foregroundImage.png';
+foregroundImage.src = '../Images/foregroundImage.png';
 
 
 // PLAYER CREATION
 const playerDownImage = new Image();
-playerDownImage.src = '../images/playerDown.png'; // loading Player sprite to Down
+playerDownImage.src = '../Images/playerDown.png'; // loading Player sprite to Down
 
 const playerLeftImage = new Image();
-playerLeftImage.src = '../images/playerLeft.png'; // loading Player sprite to Left
+playerLeftImage.src = '../Images/playerLeft.png'; // loading Player sprite to Left
 
 const playerRightImage = new Image();
-playerRightImage.src = '../images/playerRight.png'; // loading Player sprite to Right
+playerRightImage.src = '../Images/playerRight.png'; // loading Player sprite to Right
 
 const playerUpImage = new Image();
-playerUpImage.src = '../images/playerUp.png'; // loading Player sprite to Up
+playerUpImage.src = '../Images/playerUp.png'; // loading Player sprite to Up
 
 
 // Drawing image
