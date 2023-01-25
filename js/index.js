@@ -59,7 +59,6 @@ const playerUpImage = new Image();
 playerUpImage.src = '../images/playerUp.png'; // loading Player sprite to Up
 
 
-
 // Drawing image
 image.onload = () => {
     c.drawImage(image, -735, -600)
