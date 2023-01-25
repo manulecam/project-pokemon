@@ -58,7 +58,6 @@ playerRightImage.src = './Images/playerRight.png'; // loading Player sprite to R
 const playerUpImage = new Image();
 playerUpImage.src = './Images/playerUp.png'; // loading Player sprite to Up
 
-
 // Drawing image
 image.onload = () => {
     c.drawImage(image, -735, -600)
